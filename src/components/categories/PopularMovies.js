@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../state/context'
+import Responsive from '../../ui/Responsive'
 import SingleMovie from '../single-movie/SingleMovie'
 
 function PopularMovies() {
@@ -8,7 +9,7 @@ function PopularMovies() {
 	return (
 		<section>
 			<h1>Popular Movies</h1>
-            {result}
+			<Responsive resultMovies={result} />
 		</section>
 	)
 }
