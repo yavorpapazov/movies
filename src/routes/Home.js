@@ -1,5 +1,5 @@
 import classes from "./Home.module.css"
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { AppContext } from "../state/context"
 import PopularMovies from "../components/categories/PopularMovies"
 

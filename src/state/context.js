@@ -31,16 +31,40 @@ function AppContextProvider({children}) {
     setAllDocumentary(responseData.results)
   }
   useEffect(() => {
-      getMovies()
-      getTV()
-      getFamily()
-      getDocumentary()
+    getMovies()
+    getTV()
+    getFamily()
+    getDocumentary()
   }, [])
+  function getOneMovie(oneMovieId) {
+		let tempMovies = [...allMovies]
+		let oneMovie = tempMovies.find(item => item.id === Number(oneMovieId))
+		return oneMovie
+	}
+  function getOneTV(oneTVId) {
+		let tempTV = [...allTV]
+		let oneTV = tempTV.find(item => item.id === Number(oneTVId))
+		return oneTV
+	}
+	function getOneFamily(oneFamilyId) {
+		let tempFamily = [...allFamily]
+		let oneFamily = tempFamily.find(item => item.id === Number(oneFamilyId))
+		return oneFamily
+	}
+	function getOneDocumentary(oneDocumentaryId) {
+		let tempDocumentary = [...allDocumentary]
+		let oneDocumentary = tempDocumentary.find(item => item.id === Number(oneDocumentaryId))
+		return oneDocumentary
+	}
   let contextValue = {
     allMovies,
     allTV,
     allFamily,
-    allDocumentary
+    allDocumentary,
+    getOneMovie,
+    getOneTV,
+    getOneFamily,
+    getOneDocumentary
   }
   return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
 }
