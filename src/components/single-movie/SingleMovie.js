@@ -1,11 +1,11 @@
 import classes from "./SingleMovie.module.css"
 import { Link } from 'react-router-dom'
 
-function SingleMovie({id, title, image}) {
+function SingleMovie({id, title, image, categoryRoute}) {
 	return (
 		<div className={classes.container}>
             <div className={classes["image-div"]}>
-                <Link to={`/movies/${id}`}>
+                <Link to={`/${categoryRoute}/${id}`}>
 				    <img src={`https://image.tmdb.org/t/p/w500${image}`} alt="Movie" />
 			    </Link>
             </div>

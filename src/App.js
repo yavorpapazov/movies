@@ -7,12 +7,13 @@ import ErrorPage from "./routes/ErrorPage"
 
 function App() {
   let contextData = useContext(AppContext)
-  console.log(contextData)
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/movies/:movieId" element={<SingleMovieDetail getOneItem={contextData.getOneMovie} />} />
-      <Route path="/movies/:movieId" element={<SingleMovieDetail getOneItem={contextData.getOneTV} />} />
+      <Route path="/tv/:movieId" element={<SingleMovieDetail getOneItem={contextData.getOneTV} />} />
+      <Route path="/family/:movieId" element={<SingleMovieDetail getOneItem={contextData.getOneFamily} />} />
+      <Route path="/documentary/:movieId" element={<SingleMovieDetail getOneItem={contextData.getOneDocumentary} />} />
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   )

@@ -12,10 +12,10 @@ function Home() {
   return (
     <div>
         <h1 className={classes["h1-header"]}>All Movies</h1>
-        <PopularMovies category="Popular Movies" movieData={movies} />
-        <PopularMovies category="Popular TV Series" movieData={tv} />
-        <PopularMovies category="Family" movieData={family} />
-        <PopularMovies category="Documentary" movieData={documentary} />
+        <PopularMovies category="Popular Movies" movieData={movies} categoryRoute="movies" />
+        <PopularMovies category="Popular TV Series" movieData={tv} categoryRoute="tv" />
+        <PopularMovies category="Family" movieData={family} categoryRoute="family" />
+        <PopularMovies category="Documentary" movieData={documentary} categoryRoute="documentary" />
     </div>
   )
 }
