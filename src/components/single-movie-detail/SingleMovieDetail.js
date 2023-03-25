@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import LinkButton from '../../ui/LinkButton'
 
 function SingleMovieDetail({getOneItem}) {
 	let [oneTrailer, setOneTrailer] = useState({})
@@ -22,7 +23,7 @@ function SingleMovieDetail({getOneItem}) {
 	} else {
 		return (
 			<div>
-				<Link to="/">Return Home</Link>
+				<LinkButton to="/">Return Home</LinkButton>
 				<h1>Movie Details</h1>
 				<div>
 					<section>

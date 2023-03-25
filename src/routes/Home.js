@@ -11,7 +11,7 @@ function Home() {
   let family = contextData.allFamily
   let documentary = contextData.allDocumentary
   return (
-    <div>
+    <div className={classes.container}>
         <h1 className={classes["h1-header"]}>All Movies</h1>
         <SearchMovies />
         <PopularMovies category="Popular Movies" movieData={movies} categoryRoute="movies" />
