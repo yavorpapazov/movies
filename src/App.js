@@ -10,6 +10,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/search/:movieId" element={<SingleMovieDetail getOneItem={contextData.getOneSearch} />} />
       <Route path="/movies/:movieId" element={<SingleMovieDetail getOneItem={contextData.getOneMovie} />} />
       <Route path="/tv/:movieId" element={<SingleMovieDetail getOneItem={contextData.getOneTV} />} />
       <Route path="/family/:movieId" element={<SingleMovieDetail getOneItem={contextData.getOneFamily} />} />

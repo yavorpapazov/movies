@@ -6,6 +6,8 @@ function AppContextProvider({children}) {
   let [allTV, setAllTV] = useState([])
   let [allFamily, setAllFamily] = useState([])
   let [allDocumentary, setAllDocumentary] = useState([])
+  let [allSearchItems, setAllSearchItems] = useState([])
+	let [movieItem, setMovieItem] = useState("")
   async function getMovies() {
     let url = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=66948c269eebd46447b46fb977e5def4'
     let response = await fetch(url)
@@ -30,6 +32,14 @@ function AppContextProvider({children}) {
     let responseData = await response.json()
     setAllDocumentary(responseData.results)
   }
+  async function handleSubmit(e) {
+		e.preventDefault()
+		let url = `https://api.themoviedb.org/3/search/movie?api_key=66948c269eebd46447b46fb977e5def4&language=en-US&page=1&include_adult=false&query=${movieItem}`
+		let response = await fetch(url)
+		let responseData = await response.json()
+		setAllSearchItems(responseData.results)
+		setMovieItem("")
+	}
   useEffect(() => {
     getMovies()
     getTV()
@@ -56,6 +66,11 @@ function AppContextProvider({children}) {
 		let oneDocumentary = tempDocumentary.find(item => item.id === Number(oneDocumentaryId))
 		return oneDocumentary
 	}
+  function getOneSearch(oneSearchId) {
+		let tempSearch = [...allSearchItems]
+		let oneSearch = tempSearch.find(item => item.id === Number(oneSearchId))
+		return oneSearch
+	}
   let contextValue = {
     allMovies,
     allTV,
@@ -64,7 +79,13 @@ function AppContextProvider({children}) {
     getOneMovie,
     getOneTV,
     getOneFamily,
-    getOneDocumentary
+    getOneDocumentary,
+    handleSubmit,
+    allSearchItems,
+    setAllSearchItems,
+    movieItem,
+    setMovieItem,
+    getOneSearch
   }
   return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
 }
