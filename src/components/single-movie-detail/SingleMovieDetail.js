@@ -43,8 +43,8 @@ function SingleMovieDetail({getOneItem}) {
 					</section> :
 					<section className={classes["trailer-section"]}>
 						<h3>Movie Trailer</h3>
-						<div>
-							<iframe width="560" height="315" 
+						<div className={classes["trailer-div"]}>
+							<iframe
 								src={`https://www.youtube.com/embed/${oneTrailer.key}`} 
 								title={`${oneTrailer.name}`} allow="accelerometer; 
 								autoplay; clipboard-write; encrypted-media; gyroscope; 

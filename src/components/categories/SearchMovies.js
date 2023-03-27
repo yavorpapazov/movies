@@ -15,22 +15,24 @@ function SearchMovies() {
 		</section>
 	)
 	return (
-		<div className={classes["container"]}>
-			<form className={classes["search-form"]} onSubmit={contextData.handleSubmit}>
-                <div>
-                    <label htmlFor="movieItems"><h3>Search movies...</h3></label>
-                </div>
-				<div className={classes["input-button"]}>
+		<div className={classes.container}>
+			<div className={classes["container-form"]}>
+				<form className={classes["search-form"]} onSubmit={contextData.handleSubmit}>
 					<div>
-						<input type="text" id="movieItems" value={contextData.movieItem} onChange={(e) => contextData.setMovieItem(e.target.value)} required/>
+						<label htmlFor="movieItems"><h3>Search movies...</h3></label>
 					</div>
-					<div>
-						<Button addClass="btn">Search</Button>
+					<div className={classes["input-button"]}>
+						<div>
+							<input type="text" id="movieItems" value={contextData.movieItem} onChange={(e) => contextData.setMovieItem(e.target.value)} required/>
+						</div>
+						<div>
+							<Button addClass="btn">Search</Button>
+						</div>
 					</div>
+				</form>
+				<div>
+					<Button addClass="btn" onClick={() => contextData.setAllSearchItems([])}>Remove Items</Button>
 				</div>
-			</form>
-			<div>
-				<Button addClass="btn" onClick={() => contextData.setAllSearchItems([])}>Remove Items</Button>
 			</div>
 			{contextData.allSearchItems.length !== 0 && carousel}
 		</div>
