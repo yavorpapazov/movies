@@ -1,3 +1,4 @@
+import classes from "./SingleMovieDetail.module.css"
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import LinkButton from '../../ui/LinkButton'
@@ -22,28 +23,34 @@ function SingleMovieDetail({getOneItem}) {
 		)
 	} else {
 		return (
-			<div>
-				<LinkButton to="/">Return Home</LinkButton>
-				<h1>Movie Details</h1>
+			<div className={classes.container}>
 				<div>
-					<section>
+					<LinkButton to="/">Return Home</LinkButton>
+				</div>
+				<h1>Movie Details</h1>
+				<div className={classes.details}>
+					<section className={classes["image-section"]}>
 						<h3>{result.title}</h3>
-						<img src={`https://image.tmdb.org/t/p/w500${result.poster_path}`} alt='Movie' />
+						<div className={classes["image-div"]}>
+							<img src={`https://image.tmdb.org/t/p/w500${result.poster_path}`} alt='Movie' />
+						</div>
 						<h3>Overview</h3>
 						<p>{result.overview}</p>
 					</section>
 					{!oneTrailer ?
-					<section>
+					<section className={classes["no-trailer-section"]}>
 						<h3>Trailer Not Available</h3>
 					</section> :
-					<section>
+					<section className={classes["trailer-section"]}>
 						<h3>Movie Trailer</h3>
-						<iframe width="560" height="315" 
-							src={`https://www.youtube.com/embed/${oneTrailer.key}`} 
-							title={`${oneTrailer.name}`} allow="accelerometer; 
-							autoplay; clipboard-write; encrypted-media; gyroscope; 
-							picture-in-picture" allowFullScreen>
-						</iframe>
+						<div>
+							<iframe width="560" height="315" 
+								src={`https://www.youtube.com/embed/${oneTrailer.key}`} 
+								title={`${oneTrailer.name}`} allow="accelerometer; 
+								autoplay; clipboard-write; encrypted-media; gyroscope; 
+								picture-in-picture" allowFullScreen>
+							</iframe>
+						</div>
 					</section>}
 				</div>
 			</div>
