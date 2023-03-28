@@ -1,8 +1,6 @@
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-import NextArrow from "./NextArrow"
-import PrevArrow from "./PrevArrow"
 
 function Responsive({resultMovies}) {
     let settings = {
@@ -12,8 +10,6 @@ function Responsive({resultMovies}) {
         slidesToShow: 4,
         slidesToScroll: 4,
         initialSlide: 0,
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
         responsive: [
             {
                 breakpoint: 1024,
@@ -43,8 +39,8 @@ function Responsive({resultMovies}) {
             <Slider {...settings}>
                 {resultMovies}
             </Slider>
-      </div>
+        </div>
     )
-  }
+}
   
-  export default Responsive
+export default Responsive
