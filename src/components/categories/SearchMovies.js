@@ -10,7 +10,7 @@ function SearchMovies() {
 	let result = contextData.allSearchItems.map(item => <SingleMovie key={item.id} id={item.id} title={item.title} image={item.poster_path} categoryRoute="search" />)
 	let carousel = (
 		<section>
-			<h1>Search Items</h1>
+			<h1 className={classes["search-h1"]}>Search Items</h1>
 			<Responsive resultMovies={result} />
 		</section>
 	)

@@ -19,6 +19,10 @@
     display: flex;
     gap: 20px;
 }
+.search-h1 {
+    margin: 50px 0 50px;
+    text-align: center;
+}
 @media (max-width: 800px) {
     .container-form {
         align-items: center;
