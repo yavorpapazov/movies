@@ -5,14 +5,19 @@ import LinkButton from '../../ui/LinkButton'
 
 function SingleMovieDetail({getOneItem}) {
 	let [oneTrailer, setOneTrailer] = useState({})
+	let [error, setError] = useState('')
 	let {movieId} = useParams()
 	let result = getOneItem(movieId)
 	async function getOneTrailer(movieId) {
-		let url = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=66948c269eebd46447b46fb977e5def4&language=en-US`
-		let response = await fetch(url)
-		let responseData = await response.json()
-		let myTrailer = responseData.results.find(item => item.type === "Trailer")
-		setOneTrailer(myTrailer)
+		try {
+			let url = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=66948c269eebd46447b46fb977e5def4&language=en-US`
+			let response = await fetch(url)
+			let responseData = await response.json()
+			let myTrailer = responseData.results.find(item => item.type === "Trailer")
+			setOneTrailer(myTrailer)
+		} catch(err) {
+			setError(err.message)
+		}
 	}
 	useEffect(() => {
 		getOneTrailer(movieId)
@@ -37,7 +42,7 @@ function SingleMovieDetail({getOneItem}) {
 						<h3>Overview</h3>
 						<p>{result.overview}</p>
 					</section>
-					{!oneTrailer ?
+					{!oneTrailer || error ?
 					<section className={classes["no-trailer-section"]}>
 						<h3>Trailer Not Available</h3>
 					</section> :
@@ -45,10 +50,10 @@ function SingleMovieDetail({getOneItem}) {
 						<h3>Movie Trailer</h3>
 						<div className={classes["trailer-div"]}>
 							<iframe
-								src={`https://www.youtube.com/embed/${oneTrailer.key}`} 
-								title={`${oneTrailer.name}`} allow="accelerometer; 
-								autoplay; clipboard-write; encrypted-media; gyroscope; 
-								picture-in-picture" allowFullScreen>
+								src={`https://www.youtube.com/embed/${oneTrailer.key}`}
+								title={oneTrailer.name}
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+								allowFullScreen>
 							</iframe>
 						</div>
 					</section>}
